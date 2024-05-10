@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Gerenciador de Tarefas - Resultados</title>
+<title>Apostador de Loterias - Resultados</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="/estilo.css">
 </head>
@@ -17,7 +17,7 @@
 						<label th:errors="*{idLoteria}" class="validation-message"></label>
 					</div>
 					<select class="form-control" th:field="*{idLoteria}">
-		  				<option th:each="loteriasEnum : ${T(br.com.ragnar.gerenciadortarefas.enuns.LoteriasEnum).values()}" 
+		  				<option th:each="loteriasEnum : ${T(br.com.avsouza7.enuns.LoteriaEnum).values()}" 
 		  						th:value="${loteriasEnum.idLoteria}" 
 		  						th:text="${loteriasEnum.nome}">
 		  				</option>
