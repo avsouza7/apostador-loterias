@@ -1,6 +1,5 @@
 package br.com.avsouza7.filter;
 
-import br.com.avsouza7.enuns.DadosLoteriaEnum;
 import br.com.avsouza7.enuns.LoteriaEnum;
 
 public class ResultadoFilter {
@@ -28,7 +27,4 @@ public class ResultadoFilter {
 		return LoteriaEnum.getById(idLoteria);
 	}
 
-	public DadosLoteriaEnum getDados() {
-		return getLoteriaEnum().getDadosLoteriaEnum();
-	}
 }

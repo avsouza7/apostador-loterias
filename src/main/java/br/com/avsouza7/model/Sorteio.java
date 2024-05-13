@@ -16,10 +16,16 @@ public class Sorteio {
 	@JsonSerialize(using = CustomDateSerializer.class)
 	@JsonSetter("dataApuracao")
 	private Date dtSorteio;
+	@JsonDeserialize(using = CustomDateDeserializer.class)
+	@JsonSerialize(using = CustomDateSerializer.class)
+	@JsonSetter("dataProximoConcurso")
+	private Date dtProximoSorteio;
 	private Long idLoteria;
 	private Long idConcurso;
 	@JsonSetter("listaDezenas")
 	private List<Dezena> dezenas = new ArrayList<>();
+
+	@JsonSetter("listaRateioPremio")
 	private List<Premio> premios = new ArrayList<>();
 
 	public Date getDtSorteio() {
@@ -60,6 +66,14 @@ public class Sorteio {
 
 	public void setPremios(List<Premio> premios) {
 		this.premios = premios;
+	}
+
+	public Date getDtProximoSorteio() {
+		return dtProximoSorteio;
+	}
+
+	public void setDtProximoSorteio(Date dtProximoSorteio) {
+		this.dtProximoSorteio = dtProximoSorteio;
 	}
 
 }

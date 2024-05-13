@@ -1,22 +1,40 @@
 package br.com.avsouza7.enuns;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum LoteriaEnum {
-	MEGASENA(1l, "Mega-Sena", DadosLoteriaEnum.MEGASENA),
-	LOTOFACIL(2l, "Lotofácil", DadosLoteriaEnum.LOTOFACIL),
-	QUINA(3l, "Quina", DadosLoteriaEnum.QUINA), 
-	/*LOTOMANIA(4l, "Lotomania", DadosLoteriaEnum.LOTOMANIA),
-	TIMEMANIA(5l, "Timemania", DadosLoteriaEnum.TIMEMANIA),
-	DUPLA_SENA(6l, "Dupla Sena", DadosLoteriaEnum.DUPLA_SENA),
-	DIA_DE_SORTE(7l, "Dia de Sorte", DadosLoteriaEnum.DIA_DE_SORTE)*/;
+	MEGASENA(1l, "Mega-Sena") {
+		@Override
+		public Map<Integer, Integer> faixas() {
+			Map<Integer, Integer> faixas = new HashMap<>();
+			faixas.put(6, 1);
+			faixas.put(5, 2);
+			faixas.put(4, 3);
+			return faixas;
+		}
+	},
+	LOTOFACIL(2l, "Lotofácil") {
+		@Override
+		public Map<Integer, Integer> faixas() {
+			Map<Integer, Integer> faixas = new HashMap<>();
+			faixas.put(15, 1);
+			faixas.put(14, 2);
+			faixas.put(13, 3);
+			faixas.put(12, 4);
+			faixas.put(11, 5);
+			return faixas;
+		}
+	};
 
 	private final Long idLoteria;
 	private final String nome;
-	private final DadosLoteriaEnum dadosLoteriaEnum;
 
-	private LoteriaEnum(Long idLoteria, String nome, DadosLoteriaEnum dadosLoteriaEnum) {
+	public abstract Map<Integer, Integer> faixas();
+
+	private LoteriaEnum(Long idLoteria, String nome) {
 		this.idLoteria = idLoteria;
 		this.nome = nome;
-		this.dadosLoteriaEnum = dadosLoteriaEnum;
 	}
 
 	public Long getIdLoteria() {
@@ -36,7 +54,4 @@ public enum LoteriaEnum {
 		throw new IllegalArgumentException(String.format("Não existe uma loteira com o id %s", idLoteria));
 	}
 
-	public DadosLoteriaEnum getDadosLoteriaEnum() {
-		return dadosLoteriaEnum;
-	}
 }

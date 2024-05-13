@@ -3,6 +3,10 @@ package br.com.avsouza7.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import br.com.avsouza7.enuns.LoteriaEnum;
 
 public class Resultado {
 
@@ -10,7 +14,8 @@ public class Resultado {
 	private Integer nuAcertos;
 	private String vlPremio;
 	private Date dtSorteio;
-	private List<Dezena> dezenas;
+	private Long idLoteria;
+	private List<Dezena> dezenas = new ArrayList<>();
 
 	public Resultado() {
 		nuAcertos = 0;
@@ -33,9 +38,6 @@ public class Resultado {
 	}
 
 	public List<Dezena> getDezenas() {
-		if (dezenas == null) {
-			dezenas = new ArrayList<>();
-		}
 		return dezenas;
 	}
 
@@ -57,6 +59,22 @@ public class Resultado {
 
 	public void setNuAcertos(Integer nuAcertos) {
 		this.nuAcertos = nuAcertos;
+	}
+
+	public Long getIdLoteria() {
+		return idLoteria;
+	}
+
+	public void setIdLoteria(Long idLoteria) {
+		this.idLoteria = idLoteria;
+	}
+
+	public Integer getFaixa() {
+		Optional<Integer> faixa = Optional.ofNullable(LoteriaEnum.getById(idLoteria).faixas().get(nuAcertos));
+		if (faixa.isEmpty()) {
+			faixa = Optional.of(0);
+		}
+		return faixa.get();
 	}
 
 }

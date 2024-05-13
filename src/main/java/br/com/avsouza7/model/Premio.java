@@ -1,16 +1,25 @@
 package br.com.avsouza7.model;
 
+import java.math.BigDecimal;
+
+import com.fasterxml.jackson.annotation.JsonSetter;
+
+import br.com.avsouza7.util.FormataMonetario;
+
 public class Premio {
 
-	private String faixa;
+	private Integer faixa;
+	@JsonSetter("numeroDeGanhadores")
 	private String ganhadores;
-	private String premio;
+	@JsonSetter("valorPremio")
+	private BigDecimal vlPremio;
+	private String descricaoFaixa;
 
-	public String getFaixa() {
+	public Integer getFaixa() {
 		return faixa;
 	}
 
-	public void setFaixa(String faixa) {
+	public void setFaixa(Integer faixa) {
 		this.faixa = faixa;
 	}
 
@@ -22,12 +31,26 @@ public class Premio {
 		this.ganhadores = ganhadores;
 	}
 
-	public String getPremio() {
-		return premio;
+	public BigDecimal getVlPremio() {
+		return vlPremio;
 	}
 
-	public void setPremio(String premio) {
-		this.premio = premio;
+	public void setVlPremio(BigDecimal vlPremio) {
+		this.vlPremio = vlPremio;
+	}
+
+	public String getDescricaoFaixa() {
+		return descricaoFaixa;
+	}
+
+	public void setDescricaoFaixa(String descricaoFaixa) {
+		this.descricaoFaixa = descricaoFaixa;
+	}
+
+	@Override
+	public String toString() {
+		return "Premio [faixa=" + faixa + ", ganhadores=" + ganhadores + ", vlPremio="
+				+ FormataMonetario.brasileiro(vlPremio) + ", descricaoFaixa=" + descricaoFaixa + "]";
 	}
 
 }
