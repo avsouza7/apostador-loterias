@@ -35,7 +35,7 @@ public class ApostaProvider {
 
 	private Dezena umaDezena(Long idDezena) {
 		Dezena dezena = new Dezena();
-		dezena.setIdDezena(idDezena);
+		dezena.setNuDezena(idDezena);
 		return dezena;
 	}
 

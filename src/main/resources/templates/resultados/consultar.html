@@ -40,7 +40,7 @@
 		<table>
 			<tr th:each="resultado: ${resultados}" style="margin: 10px">
 				<td th:each="dezena: ${resultado.dezenas}" style="margin: 10px">
-					<p class="dezena-em-bola" th:classappend="${dezena.foiSorteada} ? numero-sorteado : numero-nao-sorteado" th:text="${dezena.idDezena}"></p>
+					<p class="dezena-em-bola" th:classappend="${dezena.foiSorteada} ? numero-sorteado : numero-nao-sorteado" th:text="${dezena.nuDezena}"></p>
 				</td>
 				<td style="margin: 10px">
 					<p class="dezena-em-bola" th:classappend="numero-acertado" th:text="${resultado.nuAcertos}"></p>

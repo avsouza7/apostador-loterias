@@ -1,15 +1,36 @@
 package br.com.avsouza7.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class Aposta {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "apostas")
+public class Aposta {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idAposta")
 	private Long idAposta;
+	@Column(name = "idLoteria", length = 50, nullable = false)
+	@NotNull(message = "Loteria é obrigatório")
 	private Long idLoteria;
-	private Date dtSorteio;
-	private List<Dezena> dezenas;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "usr_id")
+	private Usuario usuario;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idAposta")
+	private List<Dezena> dezenas = new ArrayList<>();
 
 	public Long getIdAposta() {
 		return idAposta;
@@ -19,18 +40,7 @@ public class Aposta {
 		this.idAposta = idAposta;
 	}
 
-	public Date getDtSorteio() {
-		return dtSorteio;
-	}
-
-	public void setDtSorteio(Date dtSorteio) {
-		this.dtSorteio = dtSorteio;
-	}
-
 	public List<Dezena> getDezenas() {
-		if (dezenas == null) {
-			dezenas = new ArrayList<>();
-		}
 		return dezenas;
 	}
 
@@ -44,6 +54,19 @@ public class Aposta {
 
 	public void setIdLoteria(Long idLoteria) {
 		this.idLoteria = idLoteria;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	@Override
+	public String toString() {
+		return "Aposta [idAposta=" + idAposta + ", idLoteria=" + idLoteria + ", usuario=" + usuario + ", dezenas=" + dezenas + "]";
 	}
 
 }

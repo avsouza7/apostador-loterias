@@ -1,5 +1,12 @@
 package br.com.avsouza7.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -7,23 +14,30 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import br.com.avsouza7.json.CustomDezenaDeserializer;
 import br.com.avsouza7.json.CustomDezenaSerializer;
 
+@Entity
+@Table(name = "dezena")
 public class Dezena {
 
 	@JsonSetter
 	@JsonSerialize(using = CustomDezenaSerializer.class)
 	@JsonDeserialize(using = CustomDezenaDeserializer.class)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idDezena")
 	private Long idDezena;
+	private Long nuDezena;
+
 	private boolean foiSorteada;
 
 	public Dezena() {
 	}
 
-	public Dezena(Long idDezena) {
-		this.idDezena = idDezena;
+	public Dezena(Long nuDezena) {
+		this.nuDezena = nuDezena;
 	}
 
-	public Dezena(String idDezena) {
-		this.idDezena = Long.valueOf(idDezena);
+	public Dezena(String nuDezena) {
+		this.nuDezena = Long.valueOf(nuDezena);
 	}
 
 	public Long getIdDezena() {
@@ -56,11 +70,19 @@ public class Dezena {
 			return false;
 		}
 		Dezena other = (Dezena) obj;
-		return this.getIdDezena().equals(other.getIdDezena());
+		return this.getNuDezena().equals(other.getNuDezena());
+	}
+
+	public Long getNuDezena() {
+		return nuDezena;
+	}
+
+	public void setNuDezena(Long nuDezena) {
+		this.nuDezena = nuDezena;
 	}
 
 	@Override
 	public String toString() {
-		return "Dezena [idDezena=" + idDezena + ", foiSorteada=" + foiSorteada + "]";
+		return "Dezena [idDezena=" + idDezena + ", nuDezena=" + nuDezena + ", foiSorteada=" + foiSorteada + "]";
 	}
 }
