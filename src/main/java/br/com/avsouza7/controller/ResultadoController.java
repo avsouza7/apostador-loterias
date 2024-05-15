@@ -31,16 +31,17 @@ public class ResultadoController {
 	@PostMapping("/consultar")
 	public ModelAndView consultar(@Valid ResultadoFilter filter, BindingResult result) {
 		ModelAndView modelAndView = new ModelAndView();
-		if (filter.getIdConcurso() == null) {
-			result.rejectValue("idConcurso", "idConcurso.obrigatorio", "Concurso é obrigatório");
-		}
-		if (filter.getIdLoteria() == null) {
-			result.rejectValue("idLoteria", "idLoteria.obrigatorio", "Loteria é obrigatório");
-		}
-		if (result.hasErrors()) {
-			modelAndView.addObject("resultadoFilter", filter);
-		} else {
-			modelAndView.addObject("resultados", resultadoService.getResultados(filter));
+		try {
+			if (filter.getIdConcurso() == null) {
+				result.rejectValue("idConcurso", "idConcurso.obrigatorio", "Código Concurso é obrigatório");
+			}
+			if (result.hasErrors()) {
+				modelAndView.addObject("resultadoFilter", filter);
+			} else {
+				modelAndView.addObject("resultados", resultadoService.getResultados(filter));
+			}
+		} catch (Exception e) {
+			result.rejectValue("idConcurso", "idConcurso.obrigatorio", e.getMessage());
 		}
 		modelAndView.setViewName("resultados/consultar");
 		return modelAndView;

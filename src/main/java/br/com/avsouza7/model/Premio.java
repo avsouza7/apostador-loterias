@@ -49,8 +49,7 @@ public class Premio {
 
 	@Override
 	public String toString() {
-		return "Premio [faixa=" + faixa + ", ganhadores=" + ganhadores + ", vlPremio="
-				+ FormataMonetario.brasileiro(vlPremio) + ", descricaoFaixa=" + descricaoFaixa + "]";
+		return "Premio [faixa=" + faixa + ", ganhadores=" + ganhadores + ", vlPremio=" + FormataMonetario.brasileiro(vlPremio) + ", descricaoFaixa=" + descricaoFaixa + "]";
 	}
 
 }
