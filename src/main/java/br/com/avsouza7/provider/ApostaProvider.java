@@ -16,6 +16,7 @@ public class ApostaProvider {
 	private static final Long ID_APOSTA = 1l;
 
 	public List<Aposta> getApostas(ResultadoFilter filter) {
+
 		if (LoteriaEnum.LOTOFACIL.equals(LoteriaEnum.getById(filter.getIdLoteria()))) {
 			return getApostas(filter, mapaDeApostasLotoFacil());
 		}
@@ -49,6 +50,19 @@ public class ApostaProvider {
 		apostas.put(3106l, List.of(umaAposta(1, 2, 4, 7, 8, 9, 10, 12, 13, 14, 17, 19, 21, 24, 25)));
 		apostas.put(3107l, List.of(umaAposta(1, 2, 4, 7, 8, 9, 10, 12, 13, 14, 17, 19, 21, 24, 25)));
 		apostas.put(3108l, List.of(umaAposta(1, 4, 5, 8, 9, 11, 12, 13, 14, 15, 20, 21, 23, 24, 25)));
+		apostas.put(3110l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
+		apostas.put(3111l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
+		apostas.put(3112l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
+		apostas.put(3113l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
+		apostas.put(3114l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
+		apostas.put(3115l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
+		apostas.put(3116l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
+		apostas.put(3117l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
+		apostas.put(3118l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
+		apostas.put(3119l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
+		apostas.put(3120l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
+		apostas.put(3121l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
+
 		return apostas;
 	}
 
@@ -67,9 +81,9 @@ public class ApostaProvider {
 		return aposta;
 	}
 
-	private Dezena umaDezena(Long idDezena) {
+	private Dezena umaDezena(Long nuDezena) {
 		Dezena dezena = new Dezena();
-		dezena.setNuDezena(idDezena);
+		dezena.setNuDezena(nuDezena);
 		return dezena;
 	}
 }

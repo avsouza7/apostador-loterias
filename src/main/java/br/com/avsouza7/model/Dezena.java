@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -27,6 +28,7 @@ public class Dezena {
 	private Long idDezena;
 	private Long nuDezena;
 
+	@Transient
 	private boolean foiSorteada;
 
 	public Dezena() {
@@ -46,6 +48,14 @@ public class Dezena {
 
 	public void setIdDezena(Long idDezena) {
 		this.idDezena = idDezena;
+	}
+
+	public Long getNuDezena() {
+		return nuDezena;
+	}
+
+	public void setNuDezena(Long nuDezena) {
+		this.nuDezena = nuDezena;
 	}
 
 	public boolean isFoiSorteada() {
@@ -73,16 +83,9 @@ public class Dezena {
 		return this.getNuDezena().equals(other.getNuDezena());
 	}
 
-	public Long getNuDezena() {
-		return nuDezena;
-	}
-
-	public void setNuDezena(Long nuDezena) {
-		this.nuDezena = nuDezena;
-	}
-
 	@Override
 	public String toString() {
 		return "Dezena [idDezena=" + idDezena + ", nuDezena=" + nuDezena + ", foiSorteada=" + foiSorteada + "]";
 	}
+
 }

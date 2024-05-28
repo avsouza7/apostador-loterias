@@ -10,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -22,13 +22,15 @@ public class Aposta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idAposta")
 	private Long idAposta;
-	@Column(name = "idLoteria", length = 50, nullable = false)
+	@Column(name = "nuConcurso")
+	private Long nuConcurso;
 	@NotNull(message = "Loteria é obrigatório")
+	@Column(name = "idLoteria", length = 50, nullable = false)
 	private Long idLoteria;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "usr_id")
 	private Usuario usuario;
-	@ManyToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idAposta")
 	private List<Dezena> dezenas = new ArrayList<>();
 
@@ -40,12 +42,12 @@ public class Aposta {
 		this.idAposta = idAposta;
 	}
 
-	public List<Dezena> getDezenas() {
-		return dezenas;
+	public Long getNuConcurso() {
+		return nuConcurso;
 	}
 
-	public void setDezenas(List<Dezena> dezenas) {
-		this.dezenas = dezenas;
+	public void setNuConcurso(Long nuConcurso) {
+		this.nuConcurso = nuConcurso;
 	}
 
 	public Long getIdLoteria() {
@@ -64,9 +66,17 @@ public class Aposta {
 		this.usuario = usuario;
 	}
 
+	public List<Dezena> getDezenas() {
+		return dezenas;
+	}
+
+	public void setDezenas(List<Dezena> dezenas) {
+		this.dezenas = dezenas;
+	}
+
 	@Override
 	public String toString() {
-		return "Aposta [idAposta=" + idAposta + ", idLoteria=" + idLoteria + ", usuario=" + usuario + ", dezenas=" + dezenas + "]";
+		return "Aposta [idAposta=" + idAposta + ", nuConcurso=" + nuConcurso + ", idLoteria=" + idLoteria + ", usuario=" + usuario + ", dezenas=" + dezenas + "]";
 	}
 
 }

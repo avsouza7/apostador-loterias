@@ -3,7 +3,6 @@ package br.com.avsouza7.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import br.com.avsouza7.enuns.LoteriaEnum;
@@ -75,6 +74,11 @@ public class Resultado {
 			faixa = Optional.of(0);
 		}
 		return faixa.get();
+	}
+
+	@Override
+	public String toString() {
+		return "Resultado [idConcurso=" + idConcurso + ", nuAcertos=" + nuAcertos + ", vlPremio=" + vlPremio + ", dtSorteio=" + dtSorteio + ", idLoteria=" + idLoteria + ", dezenas=" + dezenas + "]";
 	}
 
 }
