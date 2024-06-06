@@ -12,6 +12,7 @@
 	<groupId>br.com.avsouza7</groupId>
 	<artifactId>apostador-loterias</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>gerenciador-tarefas</name>
 	<description>Demo project for Spring Boot</description>
 

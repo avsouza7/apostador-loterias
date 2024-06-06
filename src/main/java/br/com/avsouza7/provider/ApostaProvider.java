@@ -23,6 +23,9 @@ public class ApostaProvider {
 		if (LoteriaEnum.MEGASENA.equals(LoteriaEnum.getById(filter.getIdLoteria()))) {
 			return getApostas(filter, mapaDeApostasMegasena());
 		}
+		if (LoteriaEnum.QUINA.equals(LoteriaEnum.getById(filter.getIdLoteria()))) {
+			return getApostas(filter, mapaDeApostasQuina());
+		}
 		throw new CustomException("Não foi implementado uma aposta para o Enum.");
 	}
 
@@ -62,13 +65,26 @@ public class ApostaProvider {
 		apostas.put(3119l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
 		apostas.put(3120l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
 		apostas.put(3121l, List.of(umaAposta(3, 4, 5, 6, 7, 8, 10, 15, 17, 18, 19, 20, 21, 23, 24)));
-
+		apostas.put(3122l, List.of(umaAposta(3, 4, 6, 8, 9, 10, 13, 14, 15, 16, 18, 20, 21, 24, 25)));
+		apostas.put(3123l, List.of(umaAposta(3, 4, 6, 8, 9, 10, 13, 14, 15, 16, 18, 20, 21, 24, 25)));
+		apostas.put(3124l, List.of(umaAposta(3, 4, 6, 8, 9, 10, 13, 14, 15, 16, 18, 20, 21, 24, 25)));
+		apostas.put(3125l, List.of(umaAposta(3, 4, 6, 8, 9, 10, 13, 14, 15, 16, 18, 20, 21, 24, 25)));
+		apostas.put(3126l, List.of(umaAposta(3, 4, 6, 8, 9, 10, 13, 14, 15, 16, 18, 20, 21, 24, 25)));
+		apostas.put(3127l, List.of(umaAposta(3, 4, 6, 8, 9, 10, 13, 14, 15, 16, 18, 20, 21, 24, 25)));
 		return apostas;
 	}
 
 	private Map<Long, List<Aposta>> mapaDeApostasMegasena() {
 		Map<Long, List<Aposta>> apostas = new HashMap<>();
 		apostas.put(0l, List.of(umaAposta()));
+		return apostas;
+	}
+
+	private Map<Long, List<Aposta>> mapaDeApostasQuina() {
+		Map<Long, List<Aposta>> apostas = new HashMap<>();
+		apostas.put(6459l, List.of(umaAposta(4, 35, 46, 58, 76), umaAposta(14, 25, 48, 62, 66)));
+		apostas.put(6460l, List.of(umaAposta(4, 35, 46, 58, 76), umaAposta(14, 25, 48, 62, 66)));
+		apostas.put(6461l, List.of(umaAposta(4, 35, 46, 58, 76), umaAposta(14, 25, 48, 62, 66)));
 		return apostas;
 	}
 

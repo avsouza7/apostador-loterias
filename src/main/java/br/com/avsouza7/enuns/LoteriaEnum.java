@@ -25,6 +25,17 @@ public enum LoteriaEnum {
 			faixas.put(11, 5);
 			return faixas;
 		}
+	},
+	QUINA(3l, "Quina") {
+		@Override
+		public Map<Integer, Integer> faixas() {
+			Map<Integer, Integer> faixas = new HashMap<>();
+			faixas.put(5, 1);
+			faixas.put(4, 2);
+			faixas.put(3, 3);
+			faixas.put(2, 4);
+			return faixas;
+		}
 	};
 
 	private final Long idLoteria;
