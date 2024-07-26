@@ -3,7 +3,7 @@ package br.com.avsouza7.util;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class FormataMonetario {
+public final class FormataMonetario {
 
 	private static final Locale PT_BR = new Locale("pt", "BR");
 

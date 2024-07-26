@@ -26,13 +26,17 @@ public class ResultadoService {
 
 	public List<Resultado> getResultados(ResultadoFilter filter) {
 		List<Resultado> resultados = new ArrayList<>();
-		Optional<Sorteio> optional = sorteioProvider.getSorteioDoSite(filter);
+		Optional<Sorteio> optional = getSorteioDoSite(filter);
 		List<Aposta> apostas = apostaProvider.getApostas(filter);
 		if (optional.isPresent()) {
 			Sorteio sorteio = optional.get();
 			apostas.forEach(aposta -> resultados.add(getResultado(filter, aposta, sorteio)));
 		}
 		return resultados;
+	}
+
+	public Optional<Sorteio> getSorteioDoSite(ResultadoFilter filter) {
+		return sorteioProvider.getSorteioDoSite(filter);
 	}
 
 	private Resultado getResultado(ResultadoFilter filter, Aposta aposta, Sorteio sorteio) {

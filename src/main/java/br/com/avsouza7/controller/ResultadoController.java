@@ -1,5 +1,7 @@
 package br.com.avsouza7.controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.avsouza7.filter.ResultadoFilter;
+import br.com.avsouza7.model.Sorteio;
 import br.com.avsouza7.service.ResultadoService;
 
 @Controller
@@ -39,6 +42,10 @@ public class ResultadoController {
 				modelAndView.addObject("resultadoFilter", filter);
 			} else {
 				modelAndView.addObject("resultados", resultadoService.getResultados(filter));
+				Optional<Sorteio> sorteioDoSite = resultadoService.getSorteioDoSite(filter);
+				if (sorteioDoSite.isPresent()) {
+					modelAndView.addObject("sorteios", sorteioDoSite.get());
+				}
 			}
 		} catch (Exception e) {
 			result.rejectValue("idConcurso", "idConcurso.obrigatorio", e.getMessage());

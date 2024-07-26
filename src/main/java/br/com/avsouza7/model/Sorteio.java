@@ -1,5 +1,6 @@
 package br.com.avsouza7.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,6 +11,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import br.com.avsouza7.json.CustomDateDeserializer;
 import br.com.avsouza7.json.CustomDateSerializer;
+import br.com.avsouza7.util.FormataMonetario;
 
 public class Sorteio {
 	@JsonDeserialize(using = CustomDateDeserializer.class)
@@ -27,6 +29,9 @@ public class Sorteio {
 
 	@JsonSetter("listaRateioPremio")
 	private List<Premio> premios = new ArrayList<>();
+
+	@JsonSetter("valorEstimadoProximoConcurso")
+	private BigDecimal valorAcumulado;
 
 	public Date getDtSorteio() {
 		return dtSorteio;
@@ -74,6 +79,18 @@ public class Sorteio {
 
 	public void setDtProximoSorteio(Date dtProximoSorteio) {
 		this.dtProximoSorteio = dtProximoSorteio;
+	}
+
+	public BigDecimal getValorAcumulado() {
+		return valorAcumulado;
+	}
+
+	public void setValorAcumulado(BigDecimal valorAcumulado) {
+		this.valorAcumulado = valorAcumulado;
+	}
+
+	public String getValorAcumuladoFormatado() {
+		return FormataMonetario.brasileiro(valorAcumulado);
 	}
 
 }

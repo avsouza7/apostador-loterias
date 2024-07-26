@@ -1,6 +1,7 @@
 package br.com.avsouza7.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -27,6 +28,8 @@ public class Aposta {
 	@NotNull(message = "Loteria é obrigatório")
 	@Column(name = "idLoteria", length = 50, nullable = false)
 	private Long idLoteria;
+	@Column(name = "dtSorteio")
+	private Date dtSorteio;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "usr_id")
 	private Usuario usuario;
@@ -72,6 +75,14 @@ public class Aposta {
 
 	public void setDezenas(List<Dezena> dezenas) {
 		this.dezenas = dezenas;
+	}
+
+	public Date getDtSorteio() {
+		return dtSorteio;
+	}
+
+	public void setDtSorteio(Date dtSorteio) {
+		this.dtSorteio = dtSorteio;
 	}
 
 	@Override
