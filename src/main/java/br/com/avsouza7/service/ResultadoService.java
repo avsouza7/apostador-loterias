@@ -21,10 +21,12 @@ import br.com.avsouza7.util.FormataMonetario;
 @Service
 public class ResultadoService {
 
-	private ApostaProvider apostaProvider = new ApostaProvider();;
+	private ApostaProvider apostaProvider = new ApostaProvider();
 	private SorteioProvider sorteioProvider = new SorteioProvider();
+	private BigDecimal valorDoPremio;
 
 	public List<Resultado> getResultados(ResultadoFilter filter) {
+		valorDoPremio = BigDecimal.ZERO;
 		List<Resultado> resultados = new ArrayList<>();
 		Optional<Sorteio> optional = getSorteioDoSite(filter);
 		List<Aposta> apostas = apostaProvider.getApostas(filter);
@@ -52,19 +54,25 @@ public class ResultadoService {
 			}
 			resultado.getDezenas().add(dezenaAposta);
 		});
-		resultado.setVlPremio(getVlPremio(resultado, sorteio));
+		BigDecimal vlPremio = getVlPremio(resultado, sorteio);
+		valorDoPremio = valorDoPremio.add(vlPremio);
+		resultado.setVlPremio(FormataMonetario.brasileiro(vlPremio));
 		return resultado;
 	}
 
-	private String getVlPremio(Resultado resultado, Sorteio sorteio) {
-		Map<Integer, String> mapaDeFaixas = getMapaDeFaixas(sorteio.getPremios());
+	private BigDecimal getVlPremio(Resultado resultado, Sorteio sorteio) {
+		Map<Integer, BigDecimal> mapaDeFaixas = getMapaDeFaixas(sorteio.getPremios());
 		return mapaDeFaixas.get(resultado.getFaixa());
 	}
 
-	private Map<Integer, String> getMapaDeFaixas(List<Premio> premios) {
-		Map<Integer, String> map = new HashMap<>();
-		map.put(0, FormataMonetario.brasileiro(BigDecimal.ZERO));
-		premios.forEach(premio -> map.put(premio.getFaixa(), FormataMonetario.brasileiro(premio.getVlPremio())));
+	private Map<Integer, BigDecimal> getMapaDeFaixas(List<Premio> premios) {
+		Map<Integer, BigDecimal> map = new HashMap<>();
+		map.put(0, BigDecimal.ZERO);
+		premios.forEach(premio -> map.put(premio.getFaixa(), premio.getVlPremio()));
 		return map;
+	}
+
+	public String getValorDoPremio() {
+		return FormataMonetario.brasileiro(valorDoPremio);
 	}
 }

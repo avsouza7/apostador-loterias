@@ -45,6 +45,8 @@ public class ResultadoController {
 				Optional<Sorteio> sorteioDoSite = resultadoService.getSorteioDoSite(filter);
 				if (sorteioDoSite.isPresent()) {
 					modelAndView.addObject("sorteios", sorteioDoSite.get());
+					modelAndView.addObject("totalDoSeuPremio", "Valor do seu prêmio: ");
+					modelAndView.addObject("valorDoPremio", resultadoService.getValorDoPremio());
 				}
 			}
 		} catch (Exception e) {

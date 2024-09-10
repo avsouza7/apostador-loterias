@@ -1,6 +1,8 @@
 package br.com.avsouza7.provider;
 
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.web.client.HttpServerErrorException;
@@ -14,17 +16,27 @@ public class SorteioProvider {
 	private static final String NAO_FOI_POSSIVEL_CONSULTAR = "Não foi possível consultar pelo código do concurso.";
 	private static final String OPS_ALGUMA_COISA_NAO_SAIU_COMO_ESPERADO = "Ops! Alguma coisa não saiu como esperado.";
 	private static final String URL = "https://servicebus2.caixa.gov.br/portaldeloterias/api/%s/%s";
+	private static Map<String, Sorteio> cache = new HashMap<>();
 
 	public Optional<Sorteio> getSorteioDoSite(ResultadoFilter filter) {
 		try {
+			Optional<Sorteio> optional = Optional.ofNullable(cache.get(keyCache(filter)));
+			if (optional.isPresent()) {
+				return optional;
+			}
 			URI uri = new URI(String.format(URL, filter.getLoteriaEnum().name(), filter.getIdConcurso()));
-			return Optional.of(new RestTemplate().getForObject(uri, Sorteio.class));
+			Sorteio sorteio = new RestTemplate().getForObject(uri, Sorteio.class);
+			cache.put(keyCache(filter), sorteio);
+			return Optional.ofNullable(sorteio);
 		} catch (HttpServerErrorException e) {
 			throw new LeituraException(NAO_FOI_POSSIVEL_CONSULTAR, e);
 		} catch (Exception e) {
 			throw new LeituraException(OPS_ALGUMA_COISA_NAO_SAIU_COMO_ESPERADO, e);
 		}
+	}
 
+	private String keyCache(ResultadoFilter filter) {
+		return filter.getLoteriaEnum().name() + "_" + filter.getIdConcurso();
 	}
 
 }
