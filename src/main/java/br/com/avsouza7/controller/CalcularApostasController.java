@@ -42,7 +42,7 @@ public class CalcularApostasController {
 				modelAndView.addObject("calculos", service.calcularJogos(LoteriaEnum.getById(filter.getIdLoteria()), filter.getMontante()));
 			}
 		} catch (Exception e) {
-			result.rejectValue("idConcurso", "idConcurso.obrigatorio", e.getMessage());
+			result.rejectValue("montante", "montante.obrigatorio", e.getMessage());
 		}
 		modelAndView.setViewName("calcular/apostas");
 		return modelAndView;
