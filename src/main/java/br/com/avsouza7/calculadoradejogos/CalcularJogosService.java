@@ -8,9 +8,12 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
 
+import org.springframework.stereotype.Service;
+
 import br.com.avsouza7.enuns.LoteriaEnum;
 import br.com.avsouza7.util.FormataMonetario;
 
+@Service
 public class CalcularJogosService {
 
 	public List<ApostasSugeridas> calcularJogos(LoteriaEnum loteriaEnum, BigDecimal montante) {
@@ -27,10 +30,6 @@ public class CalcularJogosService {
 				if (apostaFeita) {
 					continue;
 				}
-				System.out.println("Montante: " + FormataMonetario.brasileiro(montante));
-				System.out.println("Total gasto: " + FormataMonetario.brasileiro(totalGasto));
-				System.out.println("Valor da faixa: " + FormataMonetario.brasileiro(faixaLoteria.getVlAposta()));
-				System.out.println("Quantidade dezenas da faixa: " + faixaLoteria.getQtDezenas());
 				if (maiorIgualQue(saldo, faixaLoteria.getVlAposta())) {
 					totalGasto = totalGasto.add(faixaLoteria.getVlAposta());
 					saldo = saldo.subtract(faixaLoteria.getVlAposta());
@@ -66,7 +65,7 @@ public class CalcularJogosService {
 		private EnumMap<LoteriaEnum, List<FaixaLoteria>> faixas = new EnumMap<>(LoteriaEnum.class);
 
 		public Loteria(LoteriaEnum loteriaEnum) {
-			faixas.put(loteriaEnum, List.of(new FaixaLoteria(loteriaEnum, 12, BigDecimal.valueOf(4620)), new FaixaLoteria(loteriaEnum, 11, BigDecimal.valueOf(2310)), new FaixaLoteria(loteriaEnum, 10, BigDecimal.valueOf(1050)), new FaixaLoteria(loteriaEnum, 9, BigDecimal.valueOf(420)), new FaixaLoteria(loteriaEnum, 8, BigDecimal.valueOf(140)), new FaixaLoteria(loteriaEnum, 7, BigDecimal.valueOf(35)), new FaixaLoteria(loteriaEnum, 6, BigDecimal.valueOf(5))));
+			faixas.put(loteriaEnum, List.of(new FaixaLoteria(loteriaEnum, 20, BigDecimal.valueOf(193800)), new FaixaLoteria(loteriaEnum, 19, BigDecimal.valueOf(135660)), new FaixaLoteria(loteriaEnum, 18, BigDecimal.valueOf(92820)), new FaixaLoteria(loteriaEnum, 17, BigDecimal.valueOf(61880)), new FaixaLoteria(loteriaEnum, 16, BigDecimal.valueOf(40040)), new FaixaLoteria(loteriaEnum, 15, BigDecimal.valueOf(25015)), new FaixaLoteria(loteriaEnum, 14, BigDecimal.valueOf(15015)), new FaixaLoteria(loteriaEnum, 13, BigDecimal.valueOf(8580)), new FaixaLoteria(loteriaEnum, 12, BigDecimal.valueOf(4620)), new FaixaLoteria(loteriaEnum, 11, BigDecimal.valueOf(2310)), new FaixaLoteria(loteriaEnum, 10, BigDecimal.valueOf(1050)), new FaixaLoteria(loteriaEnum, 9, BigDecimal.valueOf(420)), new FaixaLoteria(loteriaEnum, 8, BigDecimal.valueOf(140)), new FaixaLoteria(loteriaEnum, 7, BigDecimal.valueOf(35)), new FaixaLoteria(loteriaEnum, 6, BigDecimal.valueOf(5))));
 		}
 
 		public EnumMap<LoteriaEnum, List<FaixaLoteria>> getFaixas() {
