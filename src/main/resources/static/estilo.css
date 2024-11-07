@@ -27,5 +27,14 @@
 .premio-valor {
     font-weight: bold;
     font-size: 25px;
+    text-align:left;
+}
+
+.texto-simples {
+    font-size: 25px;
     text-align:center;
+}
+.texto-proximo-sorteio {
+    font-size: 25px;
+    text-align:right;
 }

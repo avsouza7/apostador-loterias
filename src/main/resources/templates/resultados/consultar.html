@@ -23,8 +23,6 @@
 		  				</option>
 					</select>
 				</div>
-			</div>
-			<div class="row">
 				<div class="form-group col-md-2">
 					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('idGrupo')}">
 						<label th:errors="*{idGrupo}" class="validation-message"></label>
@@ -36,7 +34,7 @@
 		  				</option>
 					</select>
 				</div>
-			</div>			
+			</div>
 			<div class="row">
 				<div class="form-group col-md-2">
 					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('idConcurso')}">
@@ -55,11 +53,26 @@
 				<td th:each="dezena: ${sorteio.dezenas}" style="margin: 10px">
 					<p class="dezena-em-bola" th:classappend="numero-acertado" th:text="${dezena.nuDezena}"></p>
 				</td>
+			</tr>
+		</table>
+		<table>
+			<tr th:each="sorteio: ${sorteios}" style="margin: 10px">
+				<td style="margin: 10px">
+					<p class="texto-simples">Acumulado próximo concurso:</p>
+				</td>
 				<td style="margin: 10px">
 					<p class="premio-valor" th:text="${sorteio.valorAcumuladoFormatado}"></p>
-				</td>								
+				</td>
 			</tr>
-		</table>	
+			<tr th:each="sorteio: ${sorteios}" style="margin: 10px">
+				<td style="margin: 10px">
+					<p class="texto-proximo-sorteio">Próximo sorteio:</p>
+				</td>
+				<td style="margin: 10px">
+					<p class="premio-valor" th:text="${sorteio.dtProximoSorteioFormatado}"></p>
+				</td>
+			</tr>			
+		</table>				
 		<table>
 			<h3>Suas Apostas</h3>
 			<tr th:text="${totalDoSeuPremio}" style="margin: 100px" />

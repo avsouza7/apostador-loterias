@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import br.com.avsouza7.json.CustomDateDeserializer;
 import br.com.avsouza7.json.CustomDateSerializer;
+import br.com.avsouza7.util.DateUtil;
 import br.com.avsouza7.util.FormataMonetario;
 
 public class Sorteio {
@@ -91,6 +92,10 @@ public class Sorteio {
 
 	public String getValorAcumuladoFormatado() {
 		return FormataMonetario.brasileiro(valorAcumulado);
+	}
+
+	public String getDtProximoSorteioFormatado() {
+		return DateUtil.convertBr(dtProximoSorteio);
 	}
 
 }
