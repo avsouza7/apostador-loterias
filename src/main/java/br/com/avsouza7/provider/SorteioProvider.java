@@ -25,9 +25,12 @@ public class SorteioProvider {
 				return optional;
 			}
 			URI uri = new URI(String.format(URL, filter.getLoteriaEnum().name(), filter.getIdConcurso()));
-			Sorteio sorteio = new RestTemplate().getForObject(uri, Sorteio.class);
-			cache.put(keyCache(filter), sorteio);
-			return Optional.ofNullable(sorteio);
+			Optional<Sorteio> sorteio = Optional.ofNullable(new RestTemplate().getForObject(uri, Sorteio.class));
+			sorteio.ifPresentOrElse(s -> {
+				s.setIdLoteria(filter.getIdLoteria());
+				cache.put(keyCache(filter), s);
+			}, null);
+			return sorteio;
 		} catch (HttpServerErrorException e) {
 			throw new LeituraException(NAO_FOI_POSSIVEL_CONSULTAR, e);
 		} catch (Exception e) {

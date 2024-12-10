@@ -5,14 +5,13 @@ import java.util.Locale;
 
 public final class FormataMonetario {
 
-	private static final Locale PT_BR = new Locale("pt", "BR");
+	private static final Locale PT_BR = Locale.of("pt", "BR");
 
 	private FormataMonetario() {
 	}
 
 	public static String brasileiro(Number valor) {
-		NumberFormat.getInstance(PT_BR);
-		return NumberFormat.getCurrencyInstance().format(valor);
+		return NumberFormat.getCurrencyInstance(PT_BR).format(valor);
 	}
 
 }

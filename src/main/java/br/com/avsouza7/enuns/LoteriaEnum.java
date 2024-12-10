@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum LoteriaEnum {
-	MEGASENA(1l, "Mega-Sena") {
+	MEGASENA(1l, "Mega-Sena", "Mega da Virada") {
 		@Override
 		public Map<Integer, Integer> faixas() {
 			Map<Integer, Integer> faixas = new HashMap<>();
@@ -14,7 +14,7 @@ public enum LoteriaEnum {
 			return faixas;
 		}
 	},
-	LOTOFACIL(2l, "Lotofácil") {
+	LOTOFACIL(2l, "Lotofácil", "Independência") {
 		@Override
 		public Map<Integer, Integer> faixas() {
 			Map<Integer, Integer> faixas = new HashMap<>();
@@ -26,7 +26,7 @@ public enum LoteriaEnum {
 			return faixas;
 		}
 	},
-	QUINA(3l, "Quina") {
+	QUINA(3l, "Quina", "São João") {
 		@Override
 		public Map<Integer, Integer> faixas() {
 			Map<Integer, Integer> faixas = new HashMap<>();
@@ -40,12 +40,14 @@ public enum LoteriaEnum {
 
 	private final Long idLoteria;
 	private final String nome;
+	private final String sorteioEspecial;
 
 	public abstract Map<Integer, Integer> faixas();
 
-	private LoteriaEnum(Long idLoteria, String nome) {
+	private LoteriaEnum(Long idLoteria, String nome, String sorteioEspecial) {
 		this.idLoteria = idLoteria;
 		this.nome = nome;
+		this.sorteioEspecial = sorteioEspecial;
 	}
 
 	public Long getIdLoteria() {
@@ -54,6 +56,10 @@ public enum LoteriaEnum {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public String getSorteioEspecial() {
+		return sorteioEspecial;
 	}
 
 	public static LoteriaEnum getById(Long idLoteria) {

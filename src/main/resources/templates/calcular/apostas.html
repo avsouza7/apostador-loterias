@@ -39,16 +39,7 @@
 			<h3>Suas Apostas</h3>
 			<tr th:each="calculo: ${calculos}" style="margin: 10px">
 				<td class="premio-valor">
-					<p class="premio-valor" th:text="${calculo.qtApostas}"></p>
-				</td>
-				<td class="premio-valor"> 
-					<p class="premio-valor"> jogos de </p> 
-				</td>
-				<td style="margin: 10px">
-					<p class="premio-valor" th:text="${calculo.qtDezenas}"></p>
-				</td>								
-				<td class="premio-valor">
-					<p class="premio-valor"> dezenas </p> 
+					<p class="premio-valor" th:text="${calculo.sugestao}"></p>
 				</td>
 			</tr>
 		</table>		

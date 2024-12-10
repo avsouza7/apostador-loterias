@@ -58,20 +58,29 @@
 		<table>
 			<tr th:each="sorteio: ${sorteios}" style="margin: 10px">
 				<td style="margin: 10px">
-					<p class="texto-simples">Acumulado próximo concurso:</p>
+					<p class="texto-simples-medio">Acumulado próximo concurso:</p>
 				</td>
 				<td style="margin: 10px">
-					<p class="premio-valor" th:text="${sorteio.valorAcumuladoFormatado}"></p>
+					<p class="premio-valor-medio" th:text="${sorteio.valorAcumuladoFormatado}"></p>
 				</td>
 			</tr>
 			<tr th:each="sorteio: ${sorteios}" style="margin: 10px">
-				<td style="margin: 10px">
+				<td >
 					<p class="texto-proximo-sorteio">Próximo sorteio:</p>
 				</td>
-				<td style="margin: 10px">
-					<p class="premio-valor" th:text="${sorteio.dtProximoSorteioFormatado}"></p>
+				<td >
+					<p class="premio-valor-medio" th:text="${sorteio.dtProximoSorteioFormatado}"></p>
 				</td>
-			</tr>			
+			</tr>
+
+			<tr th:each="sorteio: ${sorteios}" style="margin: 10px">
+				<td style="margin: 10px">
+					<p class="texto-simples-pequeno" th:text="${sorteio.acumuladoSorteioEspecial}"></p>
+				</td>
+				<td style="margin: 10px">
+					<p class="premio-valor-pequeno" th:text="${sorteio.valorAcumuladoConcursoEspecialFormatado}"></p>
+				</td>
+			</tr>
 		</table>				
 		<table>
 			<h3>Suas Apostas</h3>

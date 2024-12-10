@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import br.com.avsouza7.enuns.LoteriaEnum;
 import br.com.avsouza7.json.CustomDateDeserializer;
 import br.com.avsouza7.json.CustomDateSerializer;
 import br.com.avsouza7.util.DateUtil;
@@ -33,6 +34,8 @@ public class Sorteio {
 
 	@JsonSetter("valorEstimadoProximoConcurso")
 	private BigDecimal valorAcumulado;
+	@JsonSetter("valorAcumuladoConcursoEspecial")
+	private BigDecimal valorAcumuladoConcursoEspecial;
 
 	public Date getDtSorteio() {
 		return dtSorteio;
@@ -96,6 +99,22 @@ public class Sorteio {
 
 	public String getDtProximoSorteioFormatado() {
 		return DateUtil.convertBr(dtProximoSorteio);
+	}
+
+	public String getValorAcumuladoConcursoEspecialFormatado() {
+		return FormataMonetario.brasileiro(valorAcumuladoConcursoEspecial);
+	}
+
+	public BigDecimal getValorAcumuladoConcursoEspecial() {
+		return valorAcumuladoConcursoEspecial;
+	}
+
+	public void setValorAcumuladoConcursoEspecial(BigDecimal valorAcumuladoConcursoEspecial) {
+		this.valorAcumuladoConcursoEspecial = valorAcumuladoConcursoEspecial;
+	}
+
+	public String getAcumuladoSorteioEspecial() {
+		return "Acumulado para o sorteio especial de " + LoteriaEnum.getById(idLoteria).getSorteioEspecial() + ":";
 	}
 
 }

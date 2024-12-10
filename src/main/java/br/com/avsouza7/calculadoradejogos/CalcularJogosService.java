@@ -123,6 +123,10 @@ public class CalcularJogosService {
 			this.vlAposta = vlAposta;
 		}
 
+		public String getSugestao() {
+			return qtApostas + " jogo(s) de " + qtDezenas + " dezenas";
+		}
+
 		@Override
 		public String toString() {
 			return "Loteria: " + loteriaEnum.getNome() + "\r\nQuantidae apostas: " + qtApostas + "\r\nQuantidade dezenas: " + qtDezenas + "\r\nValor faixa: " + FormataMonetario.brasileiro(vlAposta);
