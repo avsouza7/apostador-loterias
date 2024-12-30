@@ -124,7 +124,7 @@ public class CalcularJogosService {
 		}
 
 		public String getSugestao() {
-			return qtApostas + " jogo(s) de " + qtDezenas + " dezenas";
+			return qtApostas + " jogo(s) de " + qtDezenas + " dezenas totalizando " + FormataMonetario.brasileiro(qtApostas * vlAposta.doubleValue());
 		}
 
 		@Override
