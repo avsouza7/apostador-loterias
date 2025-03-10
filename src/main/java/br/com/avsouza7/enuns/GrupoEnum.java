@@ -1,7 +1,12 @@
 package br.com.avsouza7.enuns;
 
 public enum GrupoEnum {
-	SOZINHO(1l, "Somente Eu"), PAPO_DE_CUNHADO(2L, "Papo de Cunhado"), TORUS_5A_SERIE(3L, "Torus 5a Série"), DIRETORIA(4l, "Diretoria"), INIMIGOS_DO_FIM(5l, "Inimigos do fim");
+	SOZINHO(1l, "Somente Eu"), 
+	PAPO_DE_CUNHADO(2L, "Papo de Cunhado"), 
+	TORUS_5A_SERIE(3L, "Torus 5a Série"), 
+	DIRETORIA(4l, "Diretoria"), 
+	INIMIGOS_DO_FIM(5l, "Inimigos do fim"), 
+	FAMILIA_BUSCAPE(6L, "A Família Buscapé");
 
 	private final Long idGrupo;
 	private final String nmGrupo;
