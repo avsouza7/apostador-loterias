@@ -41,10 +41,11 @@ public enum LoteriaEnum {
 		@Override
 		public Map<Integer, Integer> faixas() {
 			Map<Integer, Integer> faixas = new HashMap<>();
-			faixas.put(5, 1);
-			faixas.put(4, 2);
-			faixas.put(3, 3);
-			faixas.put(2, 4);
+			faixas.put(6, 1);
+			faixas.put(5, 2);
+			faixas.put(4, 3);
+			faixas.put(3, 4);
+			faixas.put(2, 5);
 			return faixas;
 		}
 	};
