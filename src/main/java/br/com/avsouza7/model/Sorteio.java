@@ -117,4 +117,8 @@ public class Sorteio {
 		return "Acumulado para o sorteio especial de " + LoteriaEnum.getById(idLoteria).getSorteioEspecial() + ":";
 	}
 
+	public String getDtSorteioFormatado() {
+		return DateUtil.convertBr(dtSorteio);
+	}
+
 }

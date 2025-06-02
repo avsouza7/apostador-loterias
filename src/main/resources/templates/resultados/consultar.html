@@ -57,6 +57,14 @@
 		</table>
 		<table>
 			<tr th:each="sorteio: ${sorteios}" style="margin: 10px">
+				<td >
+					<p class="texto-proximo-sorteio">Data sorteio:</p>
+				</td>
+				<td >
+					<p class="premio-valor-medio" th:text="${sorteio.dtSorteioFormatado}"></p>
+				</td>
+			</tr>		
+			<tr th:each="sorteio: ${sorteios}" style="margin: 10px">
 				<td style="margin: 10px">
 					<p class="texto-simples-medio">Acumulado próximo concurso:</p>
 				</td>
