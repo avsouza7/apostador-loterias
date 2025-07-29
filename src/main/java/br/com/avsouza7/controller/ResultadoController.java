@@ -1,5 +1,7 @@
 package br.com.avsouza7.controller;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -13,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.avsouza7.filter.ResultadoFilter;
+import br.com.avsouza7.model.ParaMontarImagem;
+import br.com.avsouza7.model.Resultado;
 import br.com.avsouza7.model.Sorteio;
+import br.com.avsouza7.service.ImagemConcursoUseCase;
 import br.com.avsouza7.service.ResultadoService;
 
 @Controller
@@ -22,6 +27,8 @@ public class ResultadoController {
 
 	@Autowired
 	private ResultadoService resultadoService;
+	@Autowired
+	private ImagemConcursoUseCase imagemConcursoUseCase;
 
 	@GetMapping("/consultar")
 	public ModelAndView consultar() {
@@ -35,19 +42,26 @@ public class ResultadoController {
 	public ModelAndView consultar(@Valid ResultadoFilter filter, BindingResult result) {
 		ModelAndView modelAndView = new ModelAndView();
 		try {
-			if (filter.getIdConcurso() == null) {
+			if (Objects.isNull(filter.getIdConcurso())) {
 				result.rejectValue("idConcurso", "idConcurso.obrigatorio", "Código Concurso é obrigatório");
 			}
 			if (result.hasErrors()) {
 				modelAndView.addObject("resultadoFilter", filter);
 			} else {
-				modelAndView.addObject("resultados", resultadoService.getResultados(filter));
+				List<Resultado> resultados = resultadoService.getResultados(filter);
+				modelAndView.addObject("resultados", resultados);
 				Optional<Sorteio> sorteioDoSite = resultadoService.getSorteioDoSite(filter);
 				if (sorteioDoSite.isPresent()) {
 					modelAndView.addObject("sorteios", sorteioDoSite.get());
 					modelAndView.addObject("totalDoSeuPremio", "Valor do seu prêmio: ");
 					modelAndView.addObject("valorDoPremio", resultadoService.getValorDoPremio());
 				}
+				imagemConcursoUseCase.imprimir(new ParaMontarImagem()
+						.setIdLoteria(filter.getIdConcurso())
+						.setLoteriaEnum(filter.getLoteriaEnum())
+						.setResultados(resultados)
+						.setSorteio(sorteioDoSite.get())
+						.setValorDoPremio(resultadoService.getValorDoPremio()));
 			}
 		} catch (Exception e) {
 			result.rejectValue("idConcurso", "idConcurso.obrigatorio", e.getMessage());
