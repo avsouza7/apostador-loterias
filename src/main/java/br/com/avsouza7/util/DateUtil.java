@@ -9,7 +9,7 @@ import java.util.Locale;
 public final class DateUtil {
 
 	private static final Locale LOCALE_PT_BR = new Locale("pt", "BR");
-	private static final String OPS_ALGUMA_COISA_NAO_SAIU_COMO_ESPERADO = "Ops! Alguma coisa não saiu como esperado.";
+	private static final String OPS_ALGUMA_COISA_NAO_SAIU_COMO_ESPERADO = "Ops! Alguma coisa não saiu como esperado para formatar data.";
 	public static final String FORMATO_DATA_BRASILEIRO = "dd/MM/yyyy";
 
 	private DateUtil() {
