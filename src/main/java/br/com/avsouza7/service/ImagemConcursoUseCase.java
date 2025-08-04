@@ -97,10 +97,10 @@ public class ImagemConcursoUseCase {
 		g.drawString(String.format("Data do sorteio: %s", para.getSorteio().getDtSorteioFormatado()), x, y);
 		y += ESPACO_ENTRE_LINHAS;
 
-		g.drawString(String.format("Acumulado próximo concurso: %s", para.getSorteio().getDtProximoSorteioFormatado()), x, y);
+		g.drawString(String.format("Acumulado próximo concurso: %s", para.getSorteio().getValorAcumuladoFormatado()), x, y);
 		y += ESPACO_ENTRE_LINHAS;
 
-		g.drawString(String.format("Próximo sorteio: %s", para.getSorteio().getDtSorteioFormatado()), x, y);
+		g.drawString(String.format("Próximo sorteio: %s", para.getSorteio().getDtProximoSorteioFormatado()), x, y);
 		y += ESPACO_ENTRE_LINHAS;
 
 		g.drawString(String.format("Acumulado sorteio especial: %s %s", para.getSorteio().getAcumuladoSorteioEspecial(), para.getSorteio().getValorAcumuladoConcursoEspecialFormatado()), x, y);
