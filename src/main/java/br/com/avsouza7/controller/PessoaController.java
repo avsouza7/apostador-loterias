@@ -1,6 +1,7 @@
 package br.com.avsouza7.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,7 +23,7 @@ public class PessoaController {
     @GetMapping("/listar")
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("pessoas/listar");
-        mv.addObject("pessoas", repository.findAll());
+        mv.addObject("pessoas", repository.findAll(Sort.by(Sort.Direction.ASC, "nome")));
         return mv;
     }
 

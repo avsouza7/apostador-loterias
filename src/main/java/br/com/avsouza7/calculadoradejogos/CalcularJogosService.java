@@ -60,7 +60,13 @@ public class CalcularJogosService {
 
 	private EnumMap<LoteriaEnum, Loteria> faixa() {
 		EnumMap<LoteriaEnum, Loteria> faixa = new EnumMap<>(LoteriaEnum.class);
-		faixa.put(LoteriaEnum.MEGASENA, new Loteria(LoteriaEnum.MEGASENA, List.of(new FaixaLoteria(LoteriaEnum.MEGASENA, 20, BigDecimal.valueOf(193800)), new FaixaLoteria(LoteriaEnum.MEGASENA, 19, BigDecimal.valueOf(135660)), new FaixaLoteria(LoteriaEnum.MEGASENA, 18, BigDecimal.valueOf(92820)), new FaixaLoteria(LoteriaEnum.MEGASENA, 17, BigDecimal.valueOf(61880)), new FaixaLoteria(LoteriaEnum.MEGASENA, 16, BigDecimal.valueOf(40040)), new FaixaLoteria(LoteriaEnum.MEGASENA, 15, BigDecimal.valueOf(25015)), new FaixaLoteria(LoteriaEnum.MEGASENA, 14, BigDecimal.valueOf(15015)), new FaixaLoteria(LoteriaEnum.MEGASENA, 13, BigDecimal.valueOf(8580)), new FaixaLoteria(LoteriaEnum.MEGASENA, 12, BigDecimal.valueOf(4620)), new FaixaLoteria(LoteriaEnum.MEGASENA, 11, BigDecimal.valueOf(2310)), new FaixaLoteria(LoteriaEnum.MEGASENA, 10, BigDecimal.valueOf(1050)), new FaixaLoteria(LoteriaEnum.MEGASENA, 9, BigDecimal.valueOf(420)), new FaixaLoteria(LoteriaEnum.MEGASENA, 8, BigDecimal.valueOf(140)), new FaixaLoteria(LoteriaEnum.MEGASENA, 7, BigDecimal.valueOf(35)), new FaixaLoteria(LoteriaEnum.MEGASENA, 6, BigDecimal.valueOf(5)))));
+		faixa.put(LoteriaEnum.MEGASENA, new Loteria(LoteriaEnum.MEGASENA, List.of(
+		    new FaixaLoteria(LoteriaEnum.MEGASENA, 11, BigDecimal.valueOf(2772)), 
+		    new FaixaLoteria(LoteriaEnum.MEGASENA, 10, BigDecimal.valueOf(1260)), 
+		    new FaixaLoteria(LoteriaEnum.MEGASENA, 9, BigDecimal.valueOf(504)), 
+		    new FaixaLoteria(LoteriaEnum.MEGASENA, 8, BigDecimal.valueOf(168)), 
+		    new FaixaLoteria(LoteriaEnum.MEGASENA, 7, BigDecimal.valueOf(42)), 
+		    new FaixaLoteria(LoteriaEnum.MEGASENA, 6, BigDecimal.valueOf(6)))));
 		return faixa;
 	}
 

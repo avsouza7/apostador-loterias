@@ -21,17 +21,16 @@
         <tr>
             <th>Nome</th>
             <th>Observação</th>
-            <th>Ações</th>
+            <th style="width: 140px; text-align: center;">Ações</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="p : ${pessoas}">
             <td th:text="${p.nome}"></td>
             <td th:text="${p.observacao}"></td>
-            <td>
+			<td style="width: 140px; text-align: center; white-space: nowrap;">
                 <a th:href="@{|/pessoas/${p.idPessoa}/editar|}"
                    class="btn btn-warning btn-sm">Editar</a>
-
                 <a th:href="@{|/pessoas/${p.idPessoa}/excluir|}"
                    class="btn btn-danger btn-sm">Excluir</a>
             </td>
