@@ -27,8 +27,8 @@ public class ResultadoController {
 
 	@Autowired
 	private ResultadoService resultadoService;
-	@Autowired
-	private ImagemConcursoUseCase imagemConcursoUseCase;
+//	@Autowired
+//	private ImagemConcursoUseCase imagemConcursoUseCase;
 
 	@GetMapping("/consultar")
 	public ModelAndView consultar() {
@@ -56,12 +56,12 @@ public class ResultadoController {
 					modelAndView.addObject("totalDoSeuPremio", "Valor do seu prêmio: ");
 					modelAndView.addObject("valorDoPremio", resultadoService.getValorDoPremio());
 				}
-				imagemConcursoUseCase.imprimir(new ParaMontarImagem()
-						.setIdLoteria(filter.getIdConcurso())
-						.setLoteriaEnum(filter.getLoteriaEnum())
-						.setResultados(resultados)
-						.setSorteio(sorteioDoSite.get())
-						.setValorDoPremio(resultadoService.getValorDoPremio()));
+//				imagemConcursoUseCase.imprimir(new ParaMontarImagem()
+//						.setIdLoteria(filter.getIdConcurso())
+//						.setLoteriaEnum(filter.getLoteriaEnum())
+//						.setResultados(resultados)
+//						.setSorteio(sorteioDoSite.get())
+//						.setValorDoPremio(resultadoService.getValorDoPremio()));
 			}
 		} catch (Exception e) {
 			result.rejectValue("idConcurso", "idConcurso.obrigatorio", e.getMessage());

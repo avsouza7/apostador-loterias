@@ -8,35 +8,40 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "grupo")
 public class Grupo {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idGrupo")
-	private Long idGrupo;
-	@Column(name = "nmGrupo")
-	private String nmGrupo;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "idGrupo")
+  private Long idGrupo;
+  private String nome;
 
-	public Long getIdGrupo() {
-		return idGrupo;
-	}
+  public Long getIdGrupo() {
+    return idGrupo;
+  }
 
-	public void setIdGrupo(Long idGrupo) {
-		this.idGrupo = idGrupo;
-	}
+  public void setIdGrupo(Long idGrupo) {
+    this.idGrupo = idGrupo;
+  }
 
-	public String getNmGrupo() {
-		return nmGrupo;
-	}
+  public String getNome() {
+    return nome;
+  }
 
-	public void setNmGrupo(String nmGrupo) {
-		this.nmGrupo = nmGrupo;
-	}
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 
-	@Override
-	public String toString() {
-		return "Grupo [idGrupo=" + idGrupo + ", nmGrupo=" + nmGrupo + "]";
-	}
+  public String getObservacao() {
+    return observacao;
+  }
+
+  public void setObservacao(String observacao) {
+    this.observacao = observacao;
+  }
+
+  private String observacao;
+
+
 
 }
