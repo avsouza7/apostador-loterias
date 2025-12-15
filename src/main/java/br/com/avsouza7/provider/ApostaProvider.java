@@ -141,6 +141,17 @@ public class ApostaProvider {
 		agrupador.addApostas(3468, DateUtil.convertBr("13/08/2025"), List.of(umaApostaLotofacil(2, 3, 4, 5, 6, 8, 10, 13, 15, 17, 18, 20, 21, 24, 25)));
 		agrupador.addApostas(3469, DateUtil.convertBr("14/08/2025"), List.of(umaApostaLotofacil(2, 3, 4, 5, 6, 8, 10, 13, 15, 17, 18, 20, 21, 24, 25)));
 		agrupador.addApostas(3470, DateUtil.convertBr("15/08/2025"), List.of(umaApostaLotofacil(2, 3, 4, 5, 6, 8, 10, 13, 15, 17, 18, 20, 21, 24, 25)));
+
+		agrupador.addApostas(3472, DateUtil.convertBr("18/08/2025"), List.of(umaApostaLotofacil(2, 3, 7, 10, 13, 14, 15, 16, 17, 20, 21, 22, 23, 24, 25)));
+		agrupador.addApostas(3473, DateUtil.convertBr("19/08/2025"), List.of(umaApostaLotofacil(2, 3, 7, 10, 13, 14, 15, 16, 17, 20, 21, 22, 23, 24, 25)));
+		agrupador.addApostas(3474, DateUtil.convertBr("20/08/2025"), List.of(umaApostaLotofacil(2, 3, 7, 10, 13, 14, 15, 16, 17, 20, 21, 22, 23, 24, 25)));
+		agrupador.addApostas(3475, DateUtil.convertBr("21/08/2025"), List.of(umaApostaLotofacil(2, 3, 7, 10, 13, 14, 15, 16, 17, 20, 21, 22, 23, 24, 25)));
+		agrupador.addApostas(3480, DateUtil.convertBr("06/09/2025"), List.of(umaApostaLotofacil(3, 5, 6, 7, 8, 9, 10, 12, 14, 15, 18, 20, 21, 23, 24), umaApostaLotofacil(1, 5, 7, 8, 9, 10, 12, 13, 14, 16, 17, 18, 19, 23, 25)));
+
+		agrupador.addApostas(3481, DateUtil.convertBr("08/09/2025"), List.of(umaApostaLotofacil(1, 3, 4, 7, 8, 9, 11, 13, 16, 18, 20, 21, 23, 24), umaApostaLotofacil(1, 4, 5, 6, 8, 10, 12, 13, 18, 19, 21, 22, 23, 24, 25), umaApostaLotofacil(2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 16, 17, 19, 22)));
+
+		agrupador.addApostas(3493, DateUtil.convertBr("22/09/2025"), List.of(umaApostaLotofacil(4, 5, 6, 10, 11, 12, 14, 16, 18, 19, 20, 21, 22, 24, 25), umaApostaLotofacil(1, 4, 5, 6, 8, 9, 10, 12, 13, 14, 15, 22, 23, 24, 25)));
+
 		return agrupador;
 	}
 
@@ -202,9 +213,59 @@ public class ApostaProvider {
 		agrupador.addApostas(2900l, DateUtil.convertBr("12/08/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
 
 		agrupador.addApostas(2901l, DateUtil.convertBr("14/08/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
-		agrupador.addApostas(2902l, DateUtil.convertBr("12/08/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2902l, DateUtil.convertBr("16/08/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
 		agrupador.addApostas(2903l, DateUtil.convertBr("12/08/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
 		agrupador.addApostas(2904l, DateUtil.convertBr("12/08/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2905l, DateUtil.convertBr("12/08/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2906l, DateUtil.convertBr("26/08/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2907l, DateUtil.convertBr("29/08/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2908l, DateUtil.convertBr("31/08/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2909l, DateUtil.convertBr("02/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2910l, DateUtil.convertBr("06/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2911l, DateUtil.convertBr("06/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2912l, DateUtil.convertBr("06/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2913l, DateUtil.convertBr("06/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2914l, DateUtil.convertBr("06/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2915l, DateUtil.convertBr("06/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+
+		agrupador.addApostas(2916l, DateUtil.convertBr("06/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2917l, DateUtil.convertBr("18/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2918l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2919l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2920l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2921l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2922l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2923l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2924l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2925l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2926l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2927l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2928l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2929l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2931l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2932l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2933l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2934l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2935l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+
+		agrupador.addApostas(2936l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2937l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2938l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2939l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2940l, DateUtil.convertBr("13/11/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2941l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2942l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2943l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2944l, DateUtil.convertBr("23/09/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2945l, DateUtil.convertBr("29/11/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2946l, DateUtil.convertBr("29/11/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2947l, DateUtil.convertBr("29/11/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2948l, DateUtil.convertBr("29/11/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2949l, DateUtil.convertBr("29/11/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2950l, DateUtil.convertBr("29/11/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2951l, DateUtil.convertBr("16/12/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2952l, DateUtil.convertBr("29/11/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
+		agrupador.addApostas(2953l, DateUtil.convertBr("29/11/2025"), List.of(umaApostaMegaSena(1, 3, 4, 10, 11, 24), umaApostaMegaSena(2, 6, 9, 11, 17, 29), umaApostaMegaSena(8, 19, 21, 42, 49, 50)));
 		return agrupador;
 	}
 
