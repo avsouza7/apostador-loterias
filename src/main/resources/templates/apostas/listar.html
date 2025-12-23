@@ -27,7 +27,7 @@
         <tbody>
         <tr th:each="a : ${apostas}">
             <td th:text="${a.nuConcurso}"></td>
-            <td th:text="${'Prazo: ' + #dates.format(a.dtSorteio, 'dd/MM/yyyy')}"></td>
+            <td th:text="${#dates.format(a.dtSorteio, 'dd/MM/yyyy')}"></td>
 			<td style="width: 140px; text-align: center; white-space: nowrap;">
                 <a th:href="@{|/apostas/${a.idAposta}/editar|}" class="btn btn-warning btn-sm">Editar</a>
                 <a th:href="@{|/apostas/${a.idAposta}/excluir|}" class="btn btn-danger btn-sm">Excluir</a>

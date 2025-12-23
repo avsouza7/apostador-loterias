@@ -1,5 +1,6 @@
 package br.com.avsouza7.repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -8,8 +9,12 @@ import br.com.avsouza7.model.Apostador;
 
 public interface ApostadorRepository extends JpaRepository<Apostador, Long> {
 
-  @Query("SELECT a FROM Apostador a WHERE a.idConcurso=:idConcurso and a.idGrupo=:idGrupo and a.idLoteria=:idLoteria")
-  List<Apostador> getApostadores(@Param("idLoteria") Long idLoteria, @Param("idGrupo") Long idGrupo,
+  List<Apostador> findByIdLoteriaAndIdGrupoAndIdConcurso(Long idLoteria, Long idGrupo,
+      Long idConcurso);
+
+  @Query("SELECT COALESCE(SUM(a.aporte), 0) FROM Apostador a "
+      + "WHERE a.idLoteria = :idLoteria AND a.idGrupo = :idGrupo AND a.idConcurso = :idConcurso")
+  BigDecimal somaAporte(@Param("idLoteria") Long idLoteria, @Param("idGrupo") Long idGrupo,
       @Param("idConcurso") Long idConcurso);
 
 }

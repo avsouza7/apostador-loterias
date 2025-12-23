@@ -1,7 +1,9 @@
 package br.com.avsouza7.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import org.springframework.format.annotation.DateTimeFormat;
 import br.com.avsouza7.enuns.GrupoEnum;
 import br.com.avsouza7.enuns.LoteriaEnum;
 
@@ -11,6 +13,8 @@ public class CadastroAposta {
   private Long idConcurso;
   private Long idLoteria;
   private Long idGrupo;
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  private Date dtSorteio;
   private List<String> dezenas;
   private List<ApostadorDTO> apostadores;
 
@@ -76,5 +80,12 @@ public class CadastroAposta {
     this.apostadores = apostadores;
   }
 
+  public Date getDtSorteio() {
+    return dtSorteio;
+  }
+
+  public void setDtSorteio(Date dtSorteio) {
+    this.dtSorteio = dtSorteio;
+  }
 
 }

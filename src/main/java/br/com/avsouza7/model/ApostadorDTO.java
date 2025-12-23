@@ -1,6 +1,7 @@
 package br.com.avsouza7.model;
 
 import java.math.BigDecimal;
+import br.com.avsouza7.util.FormataMonetario;
 
 public class ApostadorDTO {
 
@@ -40,5 +41,9 @@ public class ApostadorDTO {
 
   public void setAporte(BigDecimal aporte) {
     this.aporte = aporte;
+  }
+
+  public String getValorPremio() {
+    return FormataMonetario.brasileiro(aporte);
   }
 }

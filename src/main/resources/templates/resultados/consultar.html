@@ -90,22 +90,73 @@
 				</td>
 			</tr>
 		</table>				
-		<table>
-			<h3>Suas Apostas</h3>
-			<tr th:text="${totalDoSeuPremio}" style="margin: 100px" />
-			<tr th:text="${valorDoPremio}" class="premio-valor" style="margin: 100px" />
-			<tr th:each="resultado: ${resultados}" style="margin: 10px">
-				<td th:each="dezena: ${resultado.dezenas}" style="margin: 10px">
-					<p class="dezena-em-bola" th:classappend="${dezena.foiSorteada} ? numero-acertado : numero-nao-sorteado" th:text="${dezena.nuDezena}"></p>
-				</td>
-				<td style="margin: 10px">
-					<p class="dezena-em-bola" th:classappend="numero-sorteado" th:text="${resultado.nuAcertos}"></p>
-				</td>
-				<td style="margin: 10px">
-					<p class="premio-valor" th:text="${resultado.vlPremio}"></p>
-				</td>				
-			</tr>
-		</table>
+		<h3>Suas Apostas e Apostadores</h3>
+
+<div class="row mt-4">
+
+    <!-- ===================== TABELA APOSTAS ===================== -->
+    <div class="col-md-6">
+        <h4>Suas Apostas</h4>
+
+        <p th:text="${totalDoSeuPremio}" class="premio-valor"></p>
+        <p th:text="${valorDoPremio}" class="premio-valor"></p>
+
+        <table id="tabelaApostas" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Dezenas</th>
+                <th>Acertos</th>
+                <th>Prêmio</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="resultado : ${resultados}">
+                <td>
+                    <span th:each="dezena : ${resultado.dezenas}">
+                        <span class="dezena-em-bola"
+                              th:classappend="${dezena.foiSorteada} ? 'numero-acertado' : 'numero-nao-sorteado'"
+                              th:text="${dezena.nuDezena}">
+                        </span>
+                    </span>
+                </td>
+
+                <td>
+                    <span class="dezena-em-bola numero-sorteado"
+                          th:text="${resultado.nuAcertos}">
+                    </span>
+                </td>
+
+                <td class="premio-valor" th:text="${resultado.vlPremio}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===================== TABELA APOSTADORES ===================== -->
+    <div class="col-md-6">
+        <h4>Apostadores</h4>
+
+        <table id="tabelaApostadores" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Prêmio</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="apostador : ${apostadores}">
+                <td th:text="${apostador.nome}" class="premio-valor-pequeno"></td>
+                <td th:text="${apostador.valorPremio}" class="premio-valor-pequeno"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+	
+		
 	</div>
 	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>

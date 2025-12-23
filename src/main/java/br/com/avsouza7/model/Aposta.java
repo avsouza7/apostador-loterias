@@ -28,6 +28,7 @@ public class Aposta {
   @Column(name = "dtSorteio")
   private Date dtSorteio;
   private String dezenasApostadas;
+  private Long idGrupo;
   @Transient
   private List<Dezena> dezenas = new ArrayList<>();
 
@@ -81,5 +82,13 @@ public class Aposta {
 
   public LoteriaEnum getLoteria() {
     return LoteriaEnum.getById(idLoteria);
+  }
+
+  public Long getIdGrupo() {
+    return idGrupo;
+  }
+
+  public void setIdGrupo(Long idGrupo) {
+    this.idGrupo = idGrupo;
   }
 }
