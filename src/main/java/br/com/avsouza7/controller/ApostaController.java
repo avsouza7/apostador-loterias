@@ -44,6 +44,13 @@ public class ApostaController {
     return mv;
   }
 
+  @GetMapping("/{id}/editar")
+  public ModelAndView editar(@PathVariable Long id) {
+    ModelAndView mv = new ModelAndView("apostas/cadastro");
+    mv.addObject("aposta", cadastroApostaService.findById(id).orElseThrow());
+    return mv;
+  }
+
   @PostMapping("/salvar")
   public String salvar(@ModelAttribute CadastroAposta aposta) {
     cadastroApostaService.save(aposta);

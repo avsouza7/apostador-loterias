@@ -2,6 +2,7 @@ package br.com.avsouza7.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.com.avsouza7.model.Aposta;
@@ -44,6 +45,11 @@ public class CadastroApostaService {
     });
     apostaRepository.saveAll(apostas);
     apostadorRepository.saveAll(apostadores);
+  }
+
+  public Optional<CadastroAposta> findById(Long id) {
+    CadastroAposta cadastroAposta = new CadastroAposta();
+    return Optional.of(cadastroAposta);
   }
 
 }
