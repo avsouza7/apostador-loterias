@@ -1,57 +1,59 @@
 package br.com.avsouza7.controller;
 
-import javax.validation.Valid;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import br.com.avsouza7.model.Aposta;
-import br.com.avsouza7.model.Megasena;
+import br.com.avsouza7.model.ApostadorDTO;
+import br.com.avsouza7.model.CadastroAposta;
+import br.com.avsouza7.repository.ApostaRepository;
+import br.com.avsouza7.repository.PessoaRepository;
+import br.com.avsouza7.service.CadastroApostaService;
 
 @Controller
-@RequestMapping("apostas")
+@RequestMapping("/apostas")
 public class ApostaController {
 
-	@GetMapping("/megasena")
-	public String megasena(Model model) {
-		Megasena aposta = new Megasena();
-		model.addAttribute("form", aposta);
-		return "apostas/megasena";
-	}
+  @Autowired
+  private ApostaRepository apostaRepository;
+  @Autowired
+  private CadastroApostaService cadastroApostaService;
+  @Autowired
+  private PessoaRepository pessoaRepository;
 
-/*	@GetMapping("/megasena_1")
-	public ModelAndView megasena() {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("aposta", new Megasena());
-		modelAndView.setViewName("apostas/megasena");
-		return modelAndView;
-	}*/
+  @GetMapping("/listar")
+  public ModelAndView listar() {
+    ModelAndView mv = new ModelAndView("apostas/listar");
+    mv.addObject("apostas", apostaRepository.findAll(Sort.by(Sort.Direction.DESC, "dtSorteio")));
+    return mv;
+  }
 
-	@PostMapping("/megasena")
-	public ModelAndView megasena(@Valid Megasena aposta) {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("aposta", aposta);
-		modelAndView.setViewName("apostas/megasena");
-		return modelAndView;
-	}
+  @GetMapping("/novo")
+  public ModelAndView novo() {
+    ModelAndView mv = new ModelAndView("apostas/cadastro");
+    CadastroAposta cadastro = new CadastroAposta();
+    cadastro.getDezenas().add("");
+    pessoaRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"))
+        .forEach(p -> cadastro.getApostadores().add(new ApostadorDTO(p)));
+    mv.addObject("aposta", cadastro);
+    return mv;
+  }
 
-	@GetMapping("/lotofacil")
-	public ModelAndView lotofacil() {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("aposta", new Aposta());
-		modelAndView.setViewName("apostas/lotofacil");
-		return modelAndView;
-	}
+  @PostMapping("/salvar")
+  public String salvar(@ModelAttribute CadastroAposta aposta) {
+    cadastroApostaService.save(aposta);
+    return "redirect:/apostas/listar";
+  }
 
-	@GetMapping("/quina")
-	public ModelAndView quina() {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("aposta", new Aposta());
-		modelAndView.setViewName("apostas/quina");
-		return modelAndView;
-	}
+  @GetMapping("/{id}/excluir")
+  public String excluir(@PathVariable Long id) {
+    apostaRepository.deleteById(id);
+    return "redirect:/apostas/listar";
+  }
+
 }
