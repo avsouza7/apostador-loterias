@@ -1,164 +1,216 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Apostador de Loterias - Resultados</title>
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="/estilo.css">
+    <meta charset="UTF-8">
+    <title>Apostador de Loterias - Resultados</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/estilo.css">
+    <style>
+        .dezena-em-bola {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: bold;
+            margin: 3px;
+            color: white;
+        }
+
+        .numero-sorteado {
+            background: #007bff;
+        }
+
+        .numero-acertado {
+            background: #28a745;
+        }
+
+        .numero-nao-sorteado {
+            background: #6c757d;
+        }
+
+        .premio-valor {
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .premio-valor-pequeno {
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
 </head>
+
 <body>
-	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
-	<div class="container">
-		<h3>Consulta de Resultados</h3>
-		<form action="/resultados/consultar" method="POST" class="form-horizontal"  th:object="${resultadoFilter}">
-			<div class="row">
-				<div class="form-group col-md-2">
-					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('idLoteria')}">
-						<label th:errors="*{idLoteria}" class="validation-message"></label>
-					</div>
-					<select class="form-control" th:field="*{idLoteria}">
-		  				<option th:each="loteriasEnum : ${T(br.com.avsouza7.enuns.LoteriaEnum).values()}" 
-		  						th:value="${loteriasEnum.idLoteria}" 
-		  						th:text="${loteriasEnum.nome}">
-		  				</option>
-					</select>
-				</div>
-				<div class="form-group col-md-2">
-					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('idGrupo')}">
-						<label th:errors="*{idGrupo}" class="validation-message"></label>
-					</div>
-					<select class="form-control" th:field="*{idGrupo}">
-		  				<option th:each="grupoEnum : ${T(br.com.avsouza7.enuns.GrupoEnum).values()}" 
-		  						th:value="${grupoEnum.idGrupo}" 
-		  						th:text="${grupoEnum.nmGrupo}">
-		  				</option>
-					</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group col-md-2">
-					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('idConcurso')}">
-						<label th:errors="*{idConcurso}" class="validation-message"></label>
-					</div>
-					<label>Código do Concurso</label> 
-					<input type="number" class="form-control" th:field="*{idConcurso}">
-				</div>
-			</div>
-			<button type="submit" class="btn btn-primary">Consultar</button>
-		</form>
-		<br>
-		<table>
-			<h4>Dezenas Sorteadas</h4>
-			<tr th:each="sorteio: ${sorteios}" style="margin: 10px">
-				<td th:each="dezena: ${sorteio.dezenas}" style="margin: 10px">
-					<p class="dezena-em-bola" th:classappend="numero-acertado" th:text="${dezena.nuDezena}"></p>
-				</td>
-			</tr>
-		</table>
-		<table>
-			<tr th:each="sorteio: ${sorteios}" style="margin: 10px">
-				<td >
-					<p class="texto-proximo-sorteio">Data sorteio:</p>
-				</td>
-				<td >
-					<p class="premio-valor-medio" th:text="${sorteio.dtSorteioFormatado}"></p>
-				</td>
-			</tr>		
-			<tr th:each="sorteio: ${sorteios}" style="margin: 10px">
-				<td style="margin: 10px">
-					<p class="texto-simples-medio">Acumulado próximo concurso:</p>
-				</td>
-				<td style="margin: 10px">
-					<p class="premio-valor-medio" th:text="${sorteio.valorAcumuladoFormatado}"></p>
-				</td>
-			</tr>
-			<tr th:each="sorteio: ${sorteios}" style="margin: 10px">
-				<td >
-					<p class="texto-proximo-sorteio">Próximo sorteio:</p>
-				</td>
-				<td >
-					<p class="premio-valor-medio" th:text="${sorteio.dtProximoSorteioFormatado}"></p>
-				</td>
-			</tr>
 
-			<tr th:each="sorteio: ${sorteios}" style="margin: 10px">
-				<td style="margin: 10px">
-					<p class="texto-simples-pequeno" th:text="${sorteio.acumuladoSorteioEspecial}"></p>
-				</td>
-				<td style="margin: 10px">
-					<p class="premio-valor-pequeno" th:text="${sorteio.valorAcumuladoConcursoEspecialFormatado}"></p>
-				</td>
-			</tr>
-		</table>				
-		<h3>Suas Apostas e Apostadores</h3>
+<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
 
-<div class="row mt-4">
+<div class="container mt-3">
 
-    <!-- ===================== TABELA APOSTAS ===================== -->
-    <div class="col-md-6">
-        <h4>Suas Apostas</h4>
+    <h3>Consulta de Resultados</h3>
 
-        <p th:text="${totalDoSeuPremio}" class="premio-valor"></p>
-        <p th:text="${valorDoPremio}" class="premio-valor"></p>
+    <!-- ================== FORM ================== -->
+    <form action="/resultados/consultar" method="POST" class="form-horizontal" th:object="${resultadoFilter}">
+        <div class="row">
+            <div class="form-group col-md-2">
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('idLoteria')}">
+                    <label th:errors="*{idLoteria}" class="validation-message"></label>
+                </div>
+                <select class="form-control" th:field="*{idLoteria}">
+                    <option th:each="loteriasEnum : ${T(br.com.avsouza7.enuns.LoteriaEnum).values()}"
+                            th:value="${loteriasEnum.idLoteria}"
+                            th:text="${loteriasEnum.nome}">
+                    </option>
+                </select>
+            </div>
 
-        <table id="tabelaApostas" class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>Dezenas</th>
-                <th>Acertos</th>
-                <th>Prêmio</th>
-            </tr>
-            </thead>
+            <div class="form-group col-md-2">
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('idGrupo')}">
+                    <label th:errors="*{idGrupo}" class="validation-message"></label>
+                </div>
+                <select class="form-control" th:field="*{idGrupo}">
+                    <option th:each="grupoEnum : ${T(br.com.avsouza7.enuns.GrupoEnum).values()}"
+                            th:value="${grupoEnum.idGrupo}"
+                            th:text="${grupoEnum.nmGrupo}">
+                    </option>
+                </select>
+            </div>
+        </div>
 
-            <tbody>
-            <tr th:each="resultado : ${resultados}">
-                <td>
-                    <span th:each="dezena : ${resultado.dezenas}">
-                        <span class="dezena-em-bola"
-                              th:classappend="${dezena.foiSorteada} ? 'numero-acertado' : 'numero-nao-sorteado'"
+        <div class="row">
+            <div class="form-group col-md-2">
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('idConcurso')}">
+                    <label th:errors="*{idConcurso}" class="validation-message"></label>
+                </div>
+                <label>Código do Concurso</label>
+                <input type="number" class="form-control" th:field="*{idConcurso}">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Consultar</button>
+    </form>
+
+
+    <!-- ================== RESULTADO ================== -->
+    <hr>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <strong>Resultado do Sorteio</strong>
+        </div>
+
+        <div class="card-body">
+
+            <div th:each="sorteio : ${sorteios}">
+
+                <div class="mb-3">
+                    <span th:each="dezena : ${sorteio.dezenas}">
+                        <span class="dezena-em-bola numero-sorteado"
                               th:text="${dezena.nuDezena}">
                         </span>
                     </span>
-                </td>
+                </div>
 
-                <td>
-                    <span class="dezena-em-bola numero-sorteado"
-                          th:text="${resultado.nuAcertos}">
-                    </span>
-                </td>
+                <p><strong>Data sorteio:</strong>
+                    <span th:text="${sorteio.dtSorteioFormatado}"></span>
+                </p>
 
-                <td class="premio-valor" th:text="${resultado.vlPremio}"></td>
-            </tr>
-            </tbody>
-        </table>
+                <p><strong>Acumulado próximo concurso:</strong>
+                    <span th:text="${sorteio.valorAcumuladoFormatado}"></span>
+                </p>
+
+                <p><strong>Próximo sorteio:</strong>
+                    <span th:text="${sorteio.dtProximoSorteioFormatado}"></span>
+                </p>
+
+                <p>
+                    <small>
+                        <span th:text="${sorteio.acumuladoSorteioEspecial}"></span>:
+                        <span class="premio-valor-pequeno"
+                              th:text="${sorteio.valorAcumuladoConcursoEspecialFormatado}">
+                        </span>
+                    </small>
+                </p>
+
+            </div>
+
+        </div>
     </div>
 
-    <!-- ===================== TABELA APOSTADORES ===================== -->
-    <div class="col-md-6">
-        <h4>Apostadores</h4>
 
-        <table id="tabelaApostadores" class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Prêmio</th>
-            </tr>
-            </thead>
+    <!-- ================== SUAS APOSTAS + APOSTADORES ================== -->
+    <h3>Suas Apostas e Apostadores</h3>
 
-            <tbody>
-            <tr th:each="apostador : ${apostadores}">
-                <td th:text="${apostador.nome}" class="premio-valor-pequeno"></td>
-                <td th:text="${apostador.valorPremio}" class="premio-valor-pequeno"></td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="row mt-3">
+
+        <!-- SUAS APOSTAS -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Suas Apostas</strong>
+                </div>
+                <div class="card-body">
+                    <h5>Valor do seu prêmio:</h5>
+                    <h3 class="premio-valor" th:text="${valorDoPremio}"></h3>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Dezenas</th>
+                            <th>Acertos</th>
+                            <th>Prêmio</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="resultado : ${resultados}">
+                            <td>
+                                <span th:each="d : ${resultado.dezenas}">
+                                    <span class="dezena-em-bola"
+                                          th:classappend="${d.foiSorteada} ? 'numero-acertado' : 'numero-nao-sorteado'"
+                                          th:text="${d.nuDezena}">
+                                    </span>
+                                </span>
+                            </td>
+                            <td th:text="${resultado.nuAcertos}" class="text-center"></td>
+                            <td class="premio-valor-pequeno"
+                                th:text="${resultado.vlPremio}">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- APOSTADORES -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Apostadores</strong>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Prêmio</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="apostador : ${apostadores}">
+                            <td th:text="${apostador.nome}"></td>
+                            <td class="premio-valor-pequeno"
+                                th:text="${apostador.valorPremio}">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>
-	
-		
-	</div>
-	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
-	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
