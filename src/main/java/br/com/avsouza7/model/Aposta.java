@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+import br.com.avsouza7.enuns.GrupoEnum;
 import br.com.avsouza7.enuns.LoteriaEnum;
 
 @Entity
@@ -90,5 +91,9 @@ public class Aposta {
 
   public void setIdGrupo(Long idGrupo) {
     this.idGrupo = idGrupo;
+  }
+
+  public GrupoEnum getGrupo() {
+    return GrupoEnum.getById(idGrupo);
   }
 }
