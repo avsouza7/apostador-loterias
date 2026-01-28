@@ -112,7 +112,12 @@
                         </span>
                     </span>
                 </div>
-
+                <p><strong>Loteria:</strong>
+                	<span th:text="${sorteio.loteriaEnum.nome}"></span>
+                </p>
+                <p><strong>Concurso:</strong>
+                	<span th:text="${sorteio.idConcurso}"></span>
+                </p>                
                 <p><strong>Data sorteio:</strong>
                     <span th:text="${sorteio.dtSorteioFormatado}"></span>
                 </p>

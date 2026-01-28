@@ -4,9 +4,11 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
+
 import br.com.avsouza7.exceptions.LeituraException;
 import br.com.avsouza7.filter.ResultadoFilter;
 import br.com.avsouza7.model.Sorteio;
@@ -31,6 +33,7 @@ public class SorteioProvider {
           Optional.ofNullable(new RestTemplate().getForObject(uri, Sorteio.class));
       sorteio.ifPresentOrElse(s -> {
         s.setIdLoteria(filter.getIdLoteria());
+        s.setIdConcurso(filter.getIdConcurso());
         cache.put(keyCache(filter), s);
       }, null);
       return sorteio;
