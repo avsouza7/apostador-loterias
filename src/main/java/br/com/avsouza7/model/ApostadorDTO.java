@@ -8,6 +8,7 @@ public class ApostadorDTO {
   private Long idPessoa;
   private String nome;
   private BigDecimal aporte;
+  private String chavePix;
 
   public ApostadorDTO() {
     aporte = BigDecimal.ZERO;
@@ -17,6 +18,7 @@ public class ApostadorDTO {
     this();
     setIdPessoa(pessoa.getIdPessoa());
     setNome(pessoa.getNome());
+    setChavePix(pessoa.getChavePix());
   }
 
   public Long getIdPessoa() {
@@ -45,5 +47,13 @@ public class ApostadorDTO {
 
   public String getValorPremio() {
     return FormataMonetario.brasileiro(aporte);
+  }
+
+  public String getChavePix() {
+    return chavePix;
+  }
+
+  public void setChavePix(String chavePix) {
+    this.chavePix = chavePix;
   }
 }
