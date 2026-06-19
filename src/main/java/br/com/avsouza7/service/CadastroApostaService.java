@@ -3,8 +3,10 @@ package br.com.avsouza7.service;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
+import br.com.avsouza7.model.ApostadorDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,7 +62,43 @@ public class CadastroApostaService {
     }
 
     public Optional<CadastroAposta> findById(Long id) {
+	Optional<Aposta> apostaOpt = apostaRepository.findById(id);
+	if (apostaOpt.isEmpty()) {
+	    return Optional.empty();
+	}
+
+	Aposta aposta = apostaOpt.get();
 	CadastroAposta cadastroAposta = new CadastroAposta();
+
+	cadastroAposta.setIdAposta(aposta.getIdAposta());
+	cadastroAposta.setIdConcurso(aposta.getNuConcurso());
+	cadastroAposta.setIdLoteria(aposta.getIdLoteria());
+	cadastroAposta.setIdGrupo(aposta.getIdGrupo());
+	cadastroAposta.setDtSorteio(aposta.getDtSorteio());
+	// Parse dezenas
+	if (Objects.nonNull(aposta.getDezenasApostadas())) {
+		cadastroAposta.getDezenas().add(aposta.getDezenasApostadas());
+	} else {
+	    cadastroAposta.getDezenas().add("");
+	}
+
+	// Fetch apostadores
+	List<Apostador> apostadores = apostadorRepository
+		.findByIdLoteriaAndIdGrupoAndIdConcurso(
+		    aposta.getIdLoteria(),
+		    aposta.getIdGrupo(),
+		    aposta.getNuConcurso()
+		);
+
+	apostadores.forEach(apostador -> {
+	    ApostadorDTO dto = new ApostadorDTO();
+	    dto.setIdPessoa(apostador.getPessoa().getIdPessoa());
+	    dto.setNome(apostador.getPessoa().getNome());
+	    dto.setAporte(apostador.getAporte());
+	    dto.setChavePix(apostador.getPessoa().getChavePix());
+	    cadastroAposta.getApostadores().add(dto);
+	});
+
 	return Optional.of(cadastroAposta);
     }
 

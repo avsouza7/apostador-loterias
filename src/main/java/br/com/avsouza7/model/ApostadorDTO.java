@@ -1,12 +1,16 @@
 package br.com.avsouza7.model;
 
 import java.math.BigDecimal;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 import br.com.avsouza7.util.FormataMonetario;
 
 public class ApostadorDTO {
 
   private Long idPessoa;
   private String nome;
+  @NotNull
+  @DecimalMin("0.01")
   private BigDecimal aporte;
   private String chavePix;
 

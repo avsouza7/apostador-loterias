@@ -36,7 +36,7 @@
             <td th:text="${a.dezenasApostadas}"></td>
 			<td style="width: 140px; text-align: center; white-space: nowrap;">
                 <a th:href="@{|/apostas/${a.idAposta}/editar|}" class="btn btn-warning btn-sm">Editar</a>
-                <a th:href="@{|/apostas/${a.idAposta}/excluir|}" class="btn btn-danger btn-sm">Excluir</a>
+                <a th:href="@{|/apostas/${a.idAposta}/excluir|}" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir esta aposta?');">Excluir</a>
             </td>
         </tr>
         </tbody>

@@ -67,7 +67,10 @@ public class ApostaController {
     }
 
     @PostMapping("/salvar")
-    public String salvar(@ModelAttribute CadastroAposta aposta) {
+    public String salvar(@Valid @ModelAttribute CadastroAposta aposta, BindingResult result) {
+	if (result.hasErrors()) {
+	    return "apostas/cadastro";
+	}
 	cadastroApostaService.save(aposta);
 	return "redirect:/apostas/listar";
     }

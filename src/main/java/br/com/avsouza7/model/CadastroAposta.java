@@ -3,6 +3,7 @@ package br.com.avsouza7.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import br.com.avsouza7.enuns.GrupoEnum;
 import br.com.avsouza7.enuns.LoteriaEnum;
@@ -10,9 +11,11 @@ import br.com.avsouza7.enuns.LoteriaEnum;
 public class CadastroAposta {
 
   private Long idAposta;
+  @NotNull
   private Long idConcurso;
   private Long idLoteria;
   private Long idGrupo;
+  @NotNull
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date dtSorteio;
   private List<String> dezenas;
