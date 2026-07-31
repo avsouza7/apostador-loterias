@@ -53,7 +53,8 @@ public class ApostaController {
 	ModelAndView mv = new ModelAndView("apostas/cadastro");
 	CadastroAposta cadastro = new CadastroAposta();
 	cadastro.getDezenas().add("");
-	pessoaRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"))
+	pessoaRepository.findAll(Sort.by(Sort.Direction.ASC, "nome")).stream()
+		.filter(p -> "S".equals(p.getFlAtivo()))
 		.forEach(p -> cadastro.getApostadores().add(new ApostadorDTO(p)));
 	mv.addObject("aposta", cadastro);
 	return mv;

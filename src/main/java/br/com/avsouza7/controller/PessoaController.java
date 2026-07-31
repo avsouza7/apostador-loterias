@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.avsouza7.model.Pessoa;
 import br.com.avsouza7.repository.PessoaRepository;
 
+import java.util.Objects;
+
 @Controller
 @RequestMapping("/pessoas")
 public class PessoaController {
@@ -42,6 +44,9 @@ public class PessoaController {
 
   @PostMapping("/salvar")
   public String salvar(@ModelAttribute Pessoa pessoa) {
+    if (Objects.isNull(pessoa.getFlAtivo())) {
+      pessoa.setFlAtivo("N");
+    }
     repository.save(pessoa);
     return "redirect:/pessoas/listar";
   }

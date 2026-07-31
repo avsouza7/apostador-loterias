@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Pessoa {
@@ -17,6 +18,8 @@ public class Pessoa {
   private String observacao;
   
   private String chavePix;
+
+  private String flAtivo;
 
   public String getObservacao() {
     return observacao;
@@ -48,6 +51,18 @@ public class Pessoa {
 
   public void setChavePix(String chavePix) {
     this.chavePix = chavePix;
+  }
+
+  public String getFlAtivo() {
+    return flAtivo;
+  }
+
+  public void setFlAtivo(String flAtivo) {
+    this.flAtivo = flAtivo;
+  }
+
+  public String getAtivo() {
+    return Objects.isNull(flAtivo) ||"S".equals(flAtivo) ? "Ativo" : "Inativo";
   }
 }
 

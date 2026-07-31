@@ -36,6 +36,14 @@
                       th:field="*{observacao}"></textarea>
         </div>
 
+        <div class="mb-3">
+            <label class="form-label">Ativo</label>
+            <input type="checkbox"
+                   name="flAtivo"
+                   value="S"
+                   th:checked="${pessoa.flAtivo == 'S'}">
+        </div>
+
         <button type="submit" class="btn btn-success">Salvar</button>
         <a th:href="@{/pessoas/listar}" class="btn btn-secondary">Cancelar</a>
 
