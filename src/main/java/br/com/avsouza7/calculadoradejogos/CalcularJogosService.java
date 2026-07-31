@@ -61,7 +61,17 @@ public class CalcularJogosService {
 	private EnumMap<LoteriaEnum, Loteria> faixa() {
 		EnumMap<LoteriaEnum, Loteria> faixa = new EnumMap<>(LoteriaEnum.class);
 		faixa.put(LoteriaEnum.MEGASENA, new Loteria(LoteriaEnum.MEGASENA, List.of(
-		    new FaixaLoteria(LoteriaEnum.MEGASENA, 11, BigDecimal.valueOf(2772)), 
+
+				new FaixaLoteria(LoteriaEnum.MEGASENA, 20, BigDecimal.valueOf(232560)),
+				new FaixaLoteria(LoteriaEnum.MEGASENA, 19, BigDecimal.valueOf(162792)),
+				new FaixaLoteria(LoteriaEnum.MEGASENA, 18, BigDecimal.valueOf(111384)),
+				new FaixaLoteria(LoteriaEnum.MEGASENA, 17, BigDecimal.valueOf(74256)),
+				new FaixaLoteria(LoteriaEnum.MEGASENA, 16, BigDecimal.valueOf(48048)),
+				new FaixaLoteria(LoteriaEnum.MEGASENA, 15, BigDecimal.valueOf(30030)),
+				new FaixaLoteria(LoteriaEnum.MEGASENA, 14, BigDecimal.valueOf(18018)),
+				new FaixaLoteria(LoteriaEnum.MEGASENA, 13, BigDecimal.valueOf(10296)),
+				new FaixaLoteria(LoteriaEnum.MEGASENA, 12, BigDecimal.valueOf(5544)),
+				new FaixaLoteria(LoteriaEnum.MEGASENA, 11, BigDecimal.valueOf(2772)),
 		    new FaixaLoteria(LoteriaEnum.MEGASENA, 10, BigDecimal.valueOf(1260)), 
 		    new FaixaLoteria(LoteriaEnum.MEGASENA, 9, BigDecimal.valueOf(504)), 
 		    new FaixaLoteria(LoteriaEnum.MEGASENA, 8, BigDecimal.valueOf(168)), 
